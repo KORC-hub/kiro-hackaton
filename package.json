@@ -3,8 +3,16 @@
   "private": true,
   "workspaces": ["packages/*", "apps/*"],
   "scripts": {
-    "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
-    "dev": "npm run start:dev --workspace @app/api"
+    "build": "npm run build:core && npm run build:api && npm run build:web",
+    "build:core": "npm run build --workspace @app/core",
+    "build:api": "npm run build --workspace @app/api",
+    "build:web": "npm run build --workspace @app/web",
+    "test": "npm run build:core && npm run test:core && npm run test:api && npm run test:web",
+    "test:core": "npm run test --workspace @app/core",
+    "test:api": "npm run test --workspace @app/api",
+    "test:web": "npm run test --workspace @app/web",
+    "dev": "npm run dev:api & api_pid=$!; trap 'kill $api_pid 2>/dev/null || true' EXIT INT TERM; npm run dev:web; wait $api_pid",
+    "dev:api": "npm run start:dev --workspace @app/api",
+    "dev:web": "npm run dev --workspace @app/web"
   }
 }
