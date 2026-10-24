@@ -1,0 +1,32 @@
+# Dependencies
+**/node_modules/
+
+# Build and test artifacts
+**/dist/
+**/.next/
+**/coverage/
+
+# Local SQLite data
+**/data/*.sqlite
+*.sqlite
+
+# Logs
+**/logs/
+*.log
+**/*.log
+
+# Local environment files (keep example files versionable)
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Common tool caches
+**/.cache/
+**/.parcel-cache/
+**/.turbo/
+**/.vite/
+**/.eslintcache
+**/.pytest_cache/
